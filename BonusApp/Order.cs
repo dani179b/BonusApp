@@ -5,7 +5,7 @@ namespace BonusApp
     public class Order
     {
         private double _valueOfProducts;
-        private double _bonusOnProduct;
+        private double _bonusOfProduct;
 
         static readonly Bonuses B = new Bonuses();
         public readonly List<Product> ListOfProducts = new List<Product>();
@@ -23,26 +23,26 @@ namespace BonusApp
 
         public double GetValueOfProduct()
         {
+            double valueOfProducts = 0;
             foreach (Product product in ListOfProducts)
             {
-                _valueOfProducts += product.Value;
+                valueOfProducts += product.Value;
             }
-            return _valueOfProducts;
+            return valueOfProducts;
         }
         public double GetBonus()
-        {   
+        {
+            double bonusOfProduct = 0;
             foreach (Product product in ListOfProducts)
             {
-                _bonusOnProduct += BonusProviderTen(product.Value);
-                _bonusOnProduct += BonusProviderFlatFive(product.Value);
-
+                bonusOfProduct += BonusProviderFlatFive(product.Value) + BonusProviderTen(product.Value);
             }
-            return _bonusOnProduct;
+            return bonusOfProduct;
         }
 
         public double GetTotalprice()
         {
-            double totalPrice = _valueOfProducts - _bonusOnProduct;
+            double totalPrice = GetValueOfProduct() - GetBonus();
             return totalPrice;
         }
     }

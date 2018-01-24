@@ -39,7 +39,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void GetValueOfProducts_Test()
         {   
-            Assert.AreEqual(30.0, _order.GetValueOfProduct());
+            Assert.AreEqual(50.0, _order.GetValueOfProduct());
         }
         [TestMethod]
         public void GetBonus_Test()
@@ -49,7 +49,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void GetTotalPrice_Test()
         {
-            
+            Assert.AreEqual(35.0, _order.GetTotalprice());
         }
     }
 }
